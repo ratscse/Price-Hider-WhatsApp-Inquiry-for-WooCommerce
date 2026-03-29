@@ -1,0 +1,247 @@
+/*
+ * Smart WhatsApp Price Hider — Admin Styles
+ * Package: smart-whatsapp-price-hider
+ */
+
+/* ─── Layout ─────────────────────────────────────────────────── */
+.swph-admin-wrap {
+    max-width: 1100px;
+}
+
+.swph-page-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem !important;
+    color: #1d2327;
+    margin-bottom: 20px !important;
+}
+
+.swph-logo {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+/* ─── Support Banner ──────────────────────────────────────────── */
+.swph-support-banner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: linear-gradient(135deg, #e8f5e9 0%, #f3e5f5 100%);
+    border: 1px solid #c8e6c9;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+}
+
+.swph-support-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex: 1;
+    min-width: 280px;
+}
+
+.swph-support-item .dashicons {
+    font-size: 28px;
+    color: #388e3c;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.swph-support-item strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #1b5e20;
+    font-size: 0.9rem;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────── */
+.swph-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-right: 6px;
+    margin-top: 2px;
+    transition: filter 0.15s, transform 0.1s;
+}
+
+.swph-btn:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+.swph-btn-coffee {
+    background: #FFDD00;
+    color: #000 !important;
+    border: 1px solid #e0c000;
+}
+
+.swph-btn-donate {
+    background: #29abe0;
+    color: #fff !important;
+    border: 1px solid #1f8bbf;
+}
+
+.swph-btn-hire {
+    background: #3b56d0;
+    color: #fff !important;
+    border: 1px solid #333;
+}
+
+/* ─── Cards ───────────────────────────────────────────────────── */
+.swph-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+
+.swph-card h2 {
+    margin-top: 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f0f0;
+    font-size: 1.1rem;
+}
+
+/* ─── Category Table ──────────────────────────────────────────── */
+.swph-category-table-wrap {
+    overflow-x: auto;
+}
+
+.swph-category-table th {
+    background: #f6f7f7;
+    white-space: nowrap;
+}
+
+.swph-category-table td,
+.swph-category-table th {
+    padding: 10px 12px;
+    vertical-align: middle;
+}
+
+.swph-category-table input[type="text"] {
+    width: 100%;
+    max-width: 200px;
+}
+
+/* ─── Analytics Stats Grid ────────────────────────────────────── */
+.swph-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.swph-stat-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px 18px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.swph-stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #25d366;
+    line-height: 1;
+}
+
+.swph-stat-label {
+    font-size: 0.8rem;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* ─── Analytics Table ─────────────────────────────────────────── */
+.swph-analytics-table th {
+    background: #f6f7f7;
+}
+
+.swph-click-badge {
+    display: inline-block;
+    background: #25d366;
+    color: #fff;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+/* ─── Product page field group ───────────────────────────────── */
+.swph-product-options {
+    border-top: 2px solid #25d366 !important;
+}
+
+/* ─── Message live preview ───────────────────────────────────── */
+.swph-msg-preview {
+    margin-top: 8px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+}
+
+.swph-msg-preview strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #166534;
+}
+
+.swph-msg-preview-text {
+    margin: 0;
+    color: #374151;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background: #fff;
+    border: 1px solid #d1fae5;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+/* ─── Category row active (hide-price checked) ───────────────── */
+.swph-category-table tbody tr.swph-row-active {
+    background: #f0fdf4 !important;
+}
+
+.swph-category-table tbody tr.swph-row-active td:first-child {
+    border-left: 3px solid #25d366;
+}
+
+/* ─── Phone field flash after auto-clean ─────────────────────── */
+.swph-field-cleaned {
+    background: #f0fdf4 !important;
+    transition: background 1.2s ease;
+}
+
+/* ─── Danger card (reset) ────────────────────────────────────── */
+.swph-card-danger {
+    border-color: #fca5a5;
+}
+
+.swph-card-danger h2 {
+    color: #b91c1c;
+}
+
+.swph-btn-reset {
+    color: #b91c1c !important;
+    border-color: #fca5a5 !important;
+}

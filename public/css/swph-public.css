@@ -1,0 +1,100 @@
+/*
+ * Smart WhatsApp Price Hider — Public Styles
+ * Package: smart-whatsapp-price-hider
+ */
+
+/* ─── Price hidden label ─────────────────────────────────────── */
+.swph-price-hidden {
+    display: inline-block;
+    color: #777;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+/* ─── Button wrapper ─────────────────────────────────────────── */
+.swph-whatsapp-wrap {
+    margin-top: 14px;
+    margin-bottom: 10px;
+}
+
+/* ─── WhatsApp button ────────────────────────────────────────── */
+.swph-whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: #25d366;
+    color: #fff !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 11px 22px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
+    box-shadow: 0 3px 12px rgba(37,211,102,.35);
+    line-height: 1;
+}
+
+.swph-whatsapp-btn:hover,
+.swph-whatsapp-btn:focus {
+    background: #1da851;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(37,211,102,.45);
+    color: #fff !important;
+    text-decoration: none !important;
+    outline: none;
+}
+
+.swph-whatsapp-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(37,211,102,.30);
+}
+
+/* ─── SVG icon inside button ─────────────────────────────────── */
+.swph-whatsapp-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+    flex-shrink: 0;
+}
+
+/* ─── Loop / card context: smaller button ────────────────────── */
+.products .swph-whatsapp-btn {
+    font-size: 0.82rem;
+    padding: 9px 16px;
+    gap: 7px;
+}
+
+.products .swph-whatsapp-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ─── Accessibility: reduced motion ──────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .swph-whatsapp-btn {
+        transition: none;
+    }
+}
+
+/* ─── Pulse animation for loop cards ─────────────────────────── */
+@keyframes swph-pulse {
+    0%, 100% { box-shadow: 0 3px 12px rgba(37,211,102,.35); }
+    50%       { box-shadow: 0 3px 20px rgba(37,211,102,.60); }
+}
+
+.products .swph-whatsapp-btn {
+    animation: swph-pulse 2.4s ease-in-out infinite;
+}
+
+.products .swph-whatsapp-btn:hover,
+.products .swph-whatsapp-btn:focus {
+    animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .products .swph-whatsapp-btn {
+        animation: none;
+    }
+}
