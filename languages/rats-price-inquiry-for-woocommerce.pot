@@ -1,12 +1,11 @@
-# Copyright (C) 2024 Your Name
+# Copyright (C) 2024 M A Shuab Ratan
 # This file is distributed under the GPL v2 or later.
-# FIRST AUTHOR <email@example.com>, 2024.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Price Hider & WhatsApp Inquiry for WooCommerce 1.0.0\n"
-"Report-Msgid-Bugs-To: https://yourwebsite.com\n"
+"Project-Id-Version: Rats Price Inquiry for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-01 00:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"

@@ -2,7 +2,7 @@
 /**
  * Handles recording and querying WhatsApp button click analytics.
  *
- * @package Price_Hider_WhatsApp_Inquiry_for_WooCommerce
+ * @package Rats_Price_Inquiry_for_WooCommerce
  * @since   1.0.0
  */
 
@@ -67,26 +67,36 @@ class SWPH_Analytics {
 	public function get_click_counts( int $limit = 50, string $date_from = '' ): array {
 		global $wpdb;
 
-		$table = $wpdb->prefix . 'swph_analytics';
-
-		$where = '';
 		if ( ! empty( $date_from ) ) {
-			$where = $wpdb->prepare( 'WHERE clicked_at >= %s', $date_from );
-		}
 
 		// phpcs:disable WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$results = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT a.product_id, COUNT(*) AS click_count
-				 FROM {$table} a
-				 {$where}
-				 GROUP BY a.product_id
-				 ORDER BY click_count DESC
-				 LIMIT %d",
+				FROM {$wpdb->prefix}swph_analytics a
+				WHERE clicked_at >= %s
+				GROUP BY a.product_id
+				ORDER BY click_count DESC
+				LIMIT %d",
+				$date_from,
 				$limit
 			)
 		);
-		// phpcs:enable
+
+		} else {
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$results = $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT a.product_id, COUNT(*) AS click_count
+				FROM {$wpdb->prefix}swph_analytics a
+				GROUP BY a.product_id
+				ORDER BY click_count DESC
+				LIMIT %d",
+				$limit
+			)
+		);
+		}	
+
 
 		if ( empty( $results ) ) {
 			return array();
@@ -95,7 +105,7 @@ class SWPH_Analytics {
 		// Attach product names.
 		foreach ( $results as &$row ) {
 			$product = wc_get_product( $row->product_id );
-			$row->product_name = $product ? $product->get_name() : __( '(deleted)', 'price-hider-whatsapp-inquiry-for-woocommerce' );
+			$row->product_name = $product ? $product->get_name() : __( '(deleted)', 'rats-price-inquiry-for-woocommerce' );
 			$row->product_url  = $product ? get_edit_post_link( $row->product_id ) : '#';
 		}
 		unset( $row );

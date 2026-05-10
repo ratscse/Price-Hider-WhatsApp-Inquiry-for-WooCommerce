@@ -1,8 +1,8 @@
 /**
- * Smart WhatsApp Price Hider — Admin JS
+ * Rats Price Inquiry for WooCommerce — Admin JS
  *
  * Features:
- *  - Live WhatsApp message preview
+ *  - Live message preview
  *  - Phone number format helper (strip non-digits on blur)
  *  - "Mark All Categories" shortcut checkbox
  *  - Highlight rows when category hide-price is enabled

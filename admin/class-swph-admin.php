@@ -2,7 +2,7 @@
 /**
  * Handles WordPress admin pages and settings registration.
  *
- * @package Price_Hider_WhatsApp_Inquiry_for_WooCommerce
+ * @package Rats_Price_Inquiry_for_WooCommerce
  * @since   1.0.0
  */
 
@@ -43,8 +43,8 @@ class SWPH_Admin {
 	 */
 	public function register_menu(): void {
 		add_menu_page(
-			__( 'Price Hider & WhatsApp Inquiry', 'price-hider-whatsapp-inquiry-for-woocommerce' ),
-			__( 'Price Hider', 'price-hider-whatsapp-inquiry-for-woocommerce' ),
+			__( 'Rats Price Inquiry', 'rats-price-inquiry-for-woocommerce' ),
+			__( 'Price Inquiry', 'rats-price-inquiry-for-woocommerce' ),
 			'manage_woocommerce',
 			'swph-settings',
 			array( $this, 'render_settings_page' ),
@@ -54,8 +54,8 @@ class SWPH_Admin {
 
 		add_submenu_page(
 			'swph-settings',
-			__( 'Settings', 'price-hider-whatsapp-inquiry-for-woocommerce' ),
-			__( 'Settings', 'price-hider-whatsapp-inquiry-for-woocommerce' ),
+			__( 'Settings', 'rats-price-inquiry-for-woocommerce' ),
+			__( 'Settings', 'rats-price-inquiry-for-woocommerce' ),
 			'manage_woocommerce',
 			'swph-settings',
 			array( $this, 'render_settings_page' )
@@ -63,8 +63,8 @@ class SWPH_Admin {
 
 		add_submenu_page(
 			'swph-settings',
-			__( 'Analytics', 'price-hider-whatsapp-inquiry-for-woocommerce' ),
-			__( 'Analytics', 'price-hider-whatsapp-inquiry-for-woocommerce' ),
+			__( 'Analytics', 'rats-price-inquiry-for-woocommerce' ),
+			__( 'Analytics', 'rats-price-inquiry-for-woocommerce' ),
 			'manage_woocommerce',
 			'swph-analytics',
 			array( 'SWPH_Admin_Analytics', 'render_page' )
@@ -72,8 +72,8 @@ class SWPH_Admin {
 
 		add_submenu_page(
 			'swph-settings',
-			__( 'Tools', 'price-hider-whatsapp-inquiry-for-woocommerce' ),
-			__( 'Tools', 'price-hider-whatsapp-inquiry-for-woocommerce' ),
+			__( 'Tools', 'rats-price-inquiry-for-woocommerce' ),
+			__( 'Tools', 'rats-price-inquiry-for-woocommerce' ),
 			'manage_woocommerce',
 			'swph-tools',
 			array( 'SWPH_Admin_Tools', 'render_page' )
@@ -87,6 +87,7 @@ class SWPH_Admin {
 		register_setting( 'swph_settings_group', 'swph_global_whatsapp', array( 'sanitize_callback' => array( $this, 'sanitize_phone' ) ) );
 		register_setting( 'swph_settings_group', 'swph_guest_only', array( 'sanitize_callback' => 'absint' ) );
 		register_setting( 'swph_settings_group', 'swph_default_button_label', array( 'sanitize_callback' => 'sanitize_text_field' ) );
+		register_setting( 'swph_settings_group', 'swph_contact_price_text', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 		register_setting( 'swph_settings_group', 'swph_default_message_template', array( 'sanitize_callback' => 'sanitize_textarea_field' ) );
 		register_setting( 'swph_settings_group', 'swph_category_rules', array( 'sanitize_callback' => array( $this, 'sanitize_category_rules' ) ) );
 		register_setting( 'swph_settings_group', 'swph_enable_analytics', array( 'sanitize_callback' => 'absint' ) );
@@ -140,8 +141,8 @@ class SWPH_Admin {
 		
 		$plugin_pages = array(
 			'toplevel_page_swph-settings',
-			'price-hider_page_swph-analytics',
-			'price-hider_page_swph-tools',
+			'price-inquiry_page_swph-analytics',
+			'price-inquiry_page_swph-tools',
 		);
 		if ( ! in_array( $hook, $plugin_pages, true ) ) {
 			return;
@@ -157,7 +158,7 @@ class SWPH_Admin {
 	 * @return array
 	 */
 	public function plugin_action_links( array $links ): array {
-		$settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=swph-settings' ) ) . '">' . esc_html__( 'Settings', 'price-hider-whatsapp-inquiry-for-woocommerce' ) . '</a>';
+		$settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=swph-settings' ) ) . '">' . esc_html__( 'Settings', 'rats-price-inquiry-for-woocommerce' ) . '</a>';
 		array_unshift( $links, $settings_link );
 		return $links;
 	}
@@ -167,7 +168,7 @@ class SWPH_Admin {
 	 */
 	public function render_settings_page(): void {
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'price-hider-whatsapp-inquiry-for-woocommerce' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'rats-price-inquiry-for-woocommerce' ) );
 		}
 
 		$settings       = SWPH_Settings::instance();
@@ -177,9 +178,9 @@ class SWPH_Admin {
 		<div class="wrap swph-admin-wrap">
 			<h1 class="swph-page-title">
 				<span class="swph-logo">
-					<img src="<?php echo esc_url( SWPH_PLUGIN_URL . 'admin/img/logo.png' ); ?>" alt="Smart WhatsApp Price Hider Logo" style="height: 32px; border-radius: 10%; width: auto;">
+					<img src="<?php echo esc_url( SWPH_PLUGIN_URL . 'admin/img/logo.png' ); ?>" alt="<?php esc_attr_e( 'Rats Price Inquiry for WooCommerce', 'rats-price-inquiry-for-woocommerce' ); ?>" style="height: 32px; border-radius: 10%; width: auto;">
 				</span>
-				<?php esc_html_e( 'Price Hider & WhatsApp Inquiry for WooCommerce', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?>
+				<?php esc_html_e( 'Rats Price Inquiry for WooCommerce', 'rats-price-inquiry-for-woocommerce' ); ?>
 			</h1>
 
 		<?php include SWPH_PLUGIN_DIR . 'admin/views/support-banner.php'; ?>
@@ -191,36 +192,56 @@ class SWPH_Admin {
 
 				<!-- Global Settings -->
 				<div class="swph-card">
-					<h2><?php esc_html_e( '⚙️ Global Settings', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></h2>
+					<h2><?php esc_html_e( '⚙️ Global Settings', 'rats-price-inquiry-for-woocommerce' ); ?></h2>
 					<table class="form-table" role="presentation">
 						<tr>
-								<th scope="row"><label for="swph_global_whatsapp"><?php esc_html_e( 'Global WhatsApp Number', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></label></th>
+								<th scope="row"><label for="swph_global_whatsapp"><?php esc_html_e( 'Global WhatsApp Number', 'rats-price-inquiry-for-woocommerce' ); ?></label></th>
 							<td>
 								<input type="text" id="swph_global_whatsapp" name="swph_global_whatsapp" value="<?php echo esc_attr( $settings->global_whatsapp() ); ?>" placeholder="14155238886" class="regular-text">
-									<p class="description"><?php esc_html_e( 'Digits only, including country code. Used as fallback when no category/product number is set.', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></p>
+									<p class="description"><?php esc_html_e( 'Digits only, including country code. Used as fallback when no category/product number is set.', 'rats-price-inquiry-for-woocommerce' ); ?></p>
 							</td>
 						</tr>
 						<tr>
-							<th scope="row"><?php esc_html_e( 'Guest-Only Mode', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></th>
+							<th scope="row"><?php esc_html_e( 'Guest-Only Mode', 'rats-price-inquiry-for-woocommerce' ); ?></th>
 							<td>
 								<label>
 									<input type="checkbox" name="swph_guest_only" value="1" <?php checked( $settings->guest_only() ); ?>>
-										<?php esc_html_e( 'Hide prices only for logged-out visitors (members see normal prices)', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?>
+										<?php esc_html_e( 'Hide prices only for logged-out visitors (members see normal prices)', 'rats-price-inquiry-for-woocommerce' ); ?>
 								</label>
 							</td>
 						</tr>
 						<tr>
-							<th scope="row"><label for="swph_default_button_label"><?php esc_html_e( 'Default Button Label', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></label></th>
+							<th scope="row"><label for="swph_default_button_label"><?php esc_html_e( 'Default Button Label', 'rats-price-inquiry-for-woocommerce' ); ?></label></th>
 							<td>
 								<input type="text" id="swph_default_button_label" name="swph_default_button_label" value="<?php echo esc_attr( $settings->default_button_label() ); ?>" class="regular-text">
 							</td>
 						</tr>
 						<tr>
-							<th scope="row"><label for="swph_default_message_template"><?php esc_html_e( 'WhatsApp Message Template', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></label></th>
+							<th scope="row">
+								<label for="swph_contact_price_text">
+									<?php esc_html_e( 'Contact Price Text', 'rats-price-inquiry-for-woocommerce' ); ?>
+								</label>
+							</th>
+							<td>
+								<input
+									type="text"
+									id="swph_contact_price_text"
+									name="swph_contact_price_text"
+									value="<?php echo esc_attr( $settings->contact_price_text() ); ?>"
+									class="regular-text"
+								>
+
+								<p class="description">
+									<?php esc_html_e( 'Text shown instead of the WooCommerce price.', 'rats-price-inquiry-for-woocommerce' ); ?>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row"><label for="swph_default_message_template"><?php esc_html_e( 'WhatsApp Message Template', 'rats-price-inquiry-for-woocommerce' ); ?></label></th>
 							<td>
 								<textarea id="swph_default_message_template" name="swph_default_message_template" rows="4" class="large-text"><?php echo esc_textarea( $settings->default_message_template() ); ?></textarea>
 								<p class="description">
-											<?php esc_html_e( 'Available placeholders (click to copy):', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?>
+											<?php esc_html_e( 'Available placeholders (click to copy):', 'rats-price-inquiry-for-woocommerce' ); ?>
 									<a href="#" class="swph-copy-placeholder button button-small" data-value="{product_name}" style="margin:2px;">{product_name}</a>
 									<a href="#" class="swph-copy-placeholder button button-small" data-value="{product_url}" style="margin:2px;">{product_url}</a>
 									<a href="#" class="swph-copy-placeholder button button-small" data-value="{product_sku}" style="margin:2px;">{product_sku}</a>
@@ -228,11 +249,11 @@ class SWPH_Admin {
 							</td>
 						</tr>
 						<tr>
-							<th scope="row"><?php esc_html_e( 'Enable Analytics', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></th>
+							<th scope="row"><?php esc_html_e( 'Enable Analytics', 'rats-price-inquiry-for-woocommerce' ); ?></th>
 							<td>
 								<label>
 									<input type="checkbox" name="swph_enable_analytics" value="1" <?php checked( $settings->analytics_enabled() ); ?>>
-											<?php esc_html_e( 'Track WhatsApp button clicks', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?>
+											<?php esc_html_e( 'Track WhatsApp button clicks', 'rats-price-inquiry-for-woocommerce' ); ?>
 								</label>
 							</td>
 						</tr>
@@ -241,19 +262,19 @@ class SWPH_Admin {
 
 				<!-- Category Rules -->
 				<div class="swph-card">
-						<h2><?php esc_html_e( '📂 Category Rules', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></h2>
-<p class="description"><?php esc_html_e( 'Set routing rules per product category. Leave fields blank to inherit global settings.', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></p>
+						<h2><?php esc_html_e( '📂 Category Rules', 'rats-price-inquiry-for-woocommerce' ); ?></h2>
+<p class="description"><?php esc_html_e( 'Set routing rules per product category. Leave fields blank to inherit global settings.', 'rats-price-inquiry-for-woocommerce' ); ?></p>
 
 					<?php if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) : ?>
 					<div class="swph-category-table-wrap">
 						<table class="swph-category-table widefat striped">
 							<thead>
 								<tr>
-											<th><?php esc_html_e( 'Category', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></th>
-											<th><?php esc_html_e( 'Hide Price', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></th>
-											<th><?php esc_html_e( 'WhatsApp Number (Primary)', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></th>
-											<th><?php esc_html_e( 'WhatsApp Number (Rotate)', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></th>
-											<th><?php esc_html_e( 'Button Label', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></th>
+											<th><?php esc_html_e( 'Category', 'rats-price-inquiry-for-woocommerce' ); ?></th>
+											<th><?php esc_html_e( 'Hide Price', 'rats-price-inquiry-for-woocommerce' ); ?></th>
+											<th><?php esc_html_e( 'WhatsApp Number (Primary)', 'rats-price-inquiry-for-woocommerce' ); ?></th>
+											<th><?php esc_html_e( 'WhatsApp Number (Rotate)', 'rats-price-inquiry-for-woocommerce' ); ?></th>
+											<th><?php esc_html_e( 'Button Label', 'rats-price-inquiry-for-woocommerce' ); ?></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -279,14 +300,14 @@ class SWPH_Admin {
 										<input type="text"
 											name="swph_category_rules[<?php echo absint( $cat->term_id ); ?>][rotate_whatsapp]"
 											value="<?php echo esc_attr( $rule['rotate_whatsapp'] ?? '' ); ?>"
-															placeholder="<?php esc_attr_e( 'Optional second number', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?>"
+															placeholder="<?php esc_attr_e( 'Optional second number', 'rats-price-inquiry-for-woocommerce' ); ?>"
 											class="regular-text">
 									</td>
 									<td>
 										<input type="text"
 											name="swph_category_rules[<?php echo absint( $cat->term_id ); ?>][label]"
 											value="<?php echo esc_attr( $rule['label'] ?? '' ); ?>"
-															placeholder="<?php esc_attr_e( 'e.g., Request Quote', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?>"
+															placeholder="<?php esc_attr_e( 'e.g., Request Quote', 'rats-price-inquiry-for-woocommerce' ); ?>"
 											class="regular-text">
 									</td>
 								</tr>
@@ -295,11 +316,11 @@ class SWPH_Admin {
 						</table>
 					</div>
 					<?php else : ?>
-								<p><?php esc_html_e( 'No product categories found. Create some in WooCommerce first.', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></p>
+								<p><?php esc_html_e( 'No product categories found. Create some in WooCommerce first.', 'rats-price-inquiry-for-woocommerce' ); ?></p>
 					<?php endif; ?>
 				</div>
 
-				<?php submit_button( __( 'Save Settings', 'price-hider-whatsapp-inquiry-for-woocommerce' ) ); ?>
+				<?php submit_button( __( 'Save Settings', 'rats-price-inquiry-for-woocommerce' ) ); ?>
 			</form>
 		<?php
 	}

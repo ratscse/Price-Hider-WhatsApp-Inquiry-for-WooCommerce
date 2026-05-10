@@ -4,7 +4,7 @@
  *
  * Removes all plugin options and the custom analytics table.
  *
- * @package Price_Hider_WhatsApp_Inquiry_for_WooCommerce
+ * @package Rats_Price_Inquiry_for_WooCommerce
  */
 
 // WordPress calls this file directly; bail if accessed any other way.
@@ -13,7 +13,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 // ── 1. Remove plugin options ──────────────────────────────────────────────
-$options = array(
+$swph_options = array(
 	'swph_global_whatsapp',
 	'swph_guest_only',
 	'swph_default_button_label',
@@ -23,20 +23,20 @@ $options = array(
 	'swph_db_version',
 );
 
-foreach ( $options as $option ) {
-	delete_option( $option );
+foreach ( $swph_options as $swph_option ) {
+	delete_option( $swph_option );
 }
 
 // ── 2. Remove per-product post meta ──────────────────────────────────────
-$meta_keys = array(
+$swph_meta_keys = array(
 	'_swph_hide_price',
 	'_swph_whatsapp_number',
 	'_swph_button_label',
 	'_swph_custom_message',
 );
 
-foreach ( $meta_keys as $key ) {
-	delete_post_meta_by_key( $key );
+foreach ( $swph_meta_keys as $swph_key ) {
+	delete_post_meta_by_key( $swph_key );
 }
 
 // ── 3. Drop the analytics table ───────────────────────────────────────────

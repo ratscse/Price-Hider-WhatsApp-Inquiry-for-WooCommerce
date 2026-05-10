@@ -1,27 +1,27 @@
 <?php
 /**
- * Renders the WhatsApp inquiry button on product pages and loops.
+ * Renders the inquiry button on product pages and loops.
  *
- * @package Price_Hider_WhatsApp_Inquiry_for_WooCommerce
+ * @package Rats_Price_Inquiry_for_WooCommerce
  * @since   1.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Class SWPH_WhatsApp_Button
+ * Class SWPH_Inquiry_Button
  */
-class SWPH_WhatsApp_Button {
+class SWPH_Inquiry_Button {
 
 	/**
 	 * Singleton instance.
 	 *
-	 * @var SWPH_WhatsApp_Button|null
+	 * @var SWPH_Inquiry_Button|null
 	 */
 	private static $instance = null;
 
 	/**
-	 * @return SWPH_WhatsApp_Button
+	 * @return SWPH_Inquiry_Button
 	 */
 	public static function instance(): self {
 		if ( null === self::$instance ) {

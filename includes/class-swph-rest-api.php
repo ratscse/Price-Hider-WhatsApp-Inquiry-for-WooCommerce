@@ -5,7 +5,7 @@
  *
  * GET /wp-json/swph/v1/product/{id}
  *
- * @package Price_Hider_WhatsApp_Inquiry_for_WooCommerce
+ * @package Rats_Price_Inquiry_for_WooCommerce
  * @since   1.0.0
  */
 
@@ -71,7 +71,7 @@ class SWPH_REST_API {
 		$product    = wc_get_product( $product_id );
 
 		if ( ! $product ) {
-			return new WP_Error( 'swph_not_found', __( 'Product not found.', 'price-hider-whatsapp-inquiry-for-woocommerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'swph_not_found', __( 'Product not found.', 'rats-price-inquiry-for-woocommerce' ), array( 'status' => 404 ) );
 		}
 
 		$settings   = SWPH_Settings::instance();
@@ -122,7 +122,7 @@ class SWPH_REST_API {
 
 		return new WP_Error(
 			'rest_forbidden',
-				esc_html__( 'You do not have permission to access this endpoint.', 'price-hider-whatsapp-inquiry-for-woocommerce' ),
+				esc_html__( 'You do not have permission to access this endpoint.', 'rats-price-inquiry-for-woocommerce' ),
 			array( 'status' => 403 )
 		);
 	}

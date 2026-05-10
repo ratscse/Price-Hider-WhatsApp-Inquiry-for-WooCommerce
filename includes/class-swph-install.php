@@ -2,7 +2,7 @@
 /**
  * Handles plugin activation, deactivation, and database setup.
  *
- * @package Price_Hider_WhatsApp_Inquiry_for_WooCommerce
+ * @package Rats_Price_Inquiry_for_WooCommerce
  * @since   1.0.0
  */
 
@@ -62,7 +62,7 @@ class SWPH_Install {
 		$defaults = array(
 			'swph_global_whatsapp'         => '',
 			'swph_guest_only'              => '0',
-			'swph_default_button_label'    => __( 'WhatsApp Us', 'price-hider-whatsapp-inquiry-for-woocommerce' ),
+			'swph_default_button_label'    => __( 'WhatsApp Us', 'rats-price-inquiry-for-woocommerce' ),
 			'swph_default_message_template'=> 'Hi, I\'m interested in {product_name}. Can you tell me the current price? Link: {product_url}',
 			'swph_category_rules'          => array(),
 			'swph_enable_analytics'        => '1',

@@ -2,7 +2,7 @@
 /**
  * Manages retrieval of plugin settings with caching.
  *
- * @package Price_Hider_WhatsApp_Inquiry_for_WooCommerce
+ * @package Rats_Price_Inquiry_for_WooCommerce
  * @since   1.0.0
  */
 
@@ -72,7 +72,17 @@ class SWPH_Settings {
 
 	/** Default button label. */
 	public function default_button_label(): string {
-		return sanitize_text_field( $this->get( 'swph_default_button_label', __( 'WhatsApp Us', 'price-hider-whatsapp-inquiry-for-woocommerce' ) ) );
+		return sanitize_text_field( $this->get( 'swph_default_button_label', __( 'WhatsApp Us', 'rats-price-inquiry-for-woocommerce' ) ) );
+	}
+
+	/** Default WhatsApp button label. */
+	public function contact_price_text(): string {
+		return sanitize_text_field(
+			$this->get(
+				'swph_contact_price_text',
+				__( 'Contact us for price', 'rats-price-inquiry-for-woocommerce' )
+			)
+		);
 	}
 
 	/** Default message template. */

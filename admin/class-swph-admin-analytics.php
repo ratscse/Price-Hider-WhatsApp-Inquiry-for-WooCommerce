@@ -2,7 +2,7 @@
 /**
  * Renders the analytics dashboard page.
  *
- * @package Price_Hider_WhatsApp_Inquiry_for_WooCommerce
+ * @package Rats_Price_Inquiry_for_WooCommerce
  * @since   1.0.0
  */
 
@@ -38,7 +38,7 @@ class SWPH_Admin_Analytics {
 	 */
 	public static function render_page(): void {
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'price-hider-whatsapp-inquiry-for-woocommerce' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'rats-price-inquiry-for-woocommerce' ) );
 		}
 
 		$analytics = SWPH_Analytics::instance();
@@ -50,7 +50,7 @@ class SWPH_Admin_Analytics {
 		<div class="wrap swph-admin-wrap">
 			<h1 class="swph-page-title">
 				<span class="swph-logo">📊</span>
-				<?php esc_html_e( 'WhatsApp Button Analytics', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?>
+				<?php esc_html_e( 'WhatsApp Button Analytics', 'rats-price-inquiry-for-woocommerce' ); ?>
 			</h1>
 
 			<?php include SWPH_PLUGIN_DIR . 'admin/views/support-banner.php'; ?>
@@ -59,37 +59,37 @@ class SWPH_Admin_Analytics {
 			<div class="swph-stats-grid">
 				<div class="swph-stat-card">
 					<span class="swph-stat-number"><?php echo esc_html( number_format_i18n( $total ) ); ?></span>
-					<span class="swph-stat-label"><?php esc_html_e( 'Total Clicks', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></span>
+					<span class="swph-stat-label"><?php esc_html_e( 'Total Clicks', 'rats-price-inquiry-for-woocommerce' ); ?></span>
 				</div>
 				<div class="swph-stat-card">
 					<span class="swph-stat-number"><?php echo esc_html( number_format_i18n( $last_7 ) ); ?></span>
-					<span class="swph-stat-label"><?php esc_html_e( 'Last 7 Days', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></span>
+					<span class="swph-stat-label"><?php esc_html_e( 'Last 7 Days', 'rats-price-inquiry-for-woocommerce' ); ?></span>
 				</div>
 				<div class="swph-stat-card">
 					<span class="swph-stat-number"><?php echo esc_html( number_format_i18n( $last_30 ) ); ?></span>
-					<span class="swph-stat-label"><?php esc_html_e( 'Last 30 Days', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></span>
+					<span class="swph-stat-label"><?php esc_html_e( 'Last 30 Days', 'rats-price-inquiry-for-woocommerce' ); ?></span>
 				</div>
 				<div class="swph-stat-card">
 					<span class="swph-stat-number"><?php echo esc_html( number_format_i18n( count( $rows ) ) ); ?></span>
-					<span class="swph-stat-label"><?php esc_html_e( 'Products Tracked', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></span>
+					<span class="swph-stat-label"><?php esc_html_e( 'Products Tracked', 'rats-price-inquiry-for-woocommerce' ); ?></span>
 				</div>
 			</div>
 
 			<!-- Data Table -->
 			<div class="swph-card">
-				<h2><?php esc_html_e( 'Clicks per Product', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></h2>
+				<h2><?php esc_html_e( 'Clicks per Product', 'rats-price-inquiry-for-woocommerce' ); ?></h2>
 
 				<?php if ( empty( $rows ) ) : ?>
-					<p><?php esc_html_e( 'No click data yet. Enable analytics in Settings and wait for customers to click your WhatsApp buttons.', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></p>
+					<p><?php esc_html_e( 'No click data yet. Enable analytics in Settings and wait for customers to click your WhatsApp buttons.', 'rats-price-inquiry-for-woocommerce' ); ?></p>
 				<?php else : ?>
 					<table class="widefat striped swph-analytics-table">
 						<thead>
 							<tr>
-								<th><?php esc_html_e( '#', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></th>
-								<th><?php esc_html_e( 'Product', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></th>
-								<th><?php esc_html_e( 'Product ID', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></th>
-								<th><?php esc_html_e( 'WhatsApp Clicks', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></th>
-								<th><?php esc_html_e( 'Actions', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?></th>
+								<th><?php esc_html_e( '#', 'rats-price-inquiry-for-woocommerce' ); ?></th>
+								<th><?php esc_html_e( 'Product', 'rats-price-inquiry-for-woocommerce' ); ?></th>
+								<th><?php esc_html_e( 'Product ID', 'rats-price-inquiry-for-woocommerce' ); ?></th>
+								<th><?php esc_html_e( 'WhatsApp Clicks', 'rats-price-inquiry-for-woocommerce' ); ?></th>
+								<th><?php esc_html_e( 'Actions', 'rats-price-inquiry-for-woocommerce' ); ?></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -104,7 +104,7 @@ class SWPH_Admin_Analytics {
 								<td>
 									<?php if ( '#' !== $row->product_url ) : ?>
 										<a href="<?php echo esc_url( $row->product_url ); ?>" class="button button-small">
-											<?php esc_html_e( 'Edit Product', 'price-hider-whatsapp-inquiry-for-woocommerce' ); ?>
+											<?php esc_html_e( 'Edit Product', 'rats-price-inquiry-for-woocommerce' ); ?>
 										</a>
 									<?php endif; ?>
 								</td>

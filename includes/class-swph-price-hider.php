@@ -2,7 +2,7 @@
 /**
  * Handles hiding WooCommerce prices on the front end.
  *
- * @package Price_Hider_WhatsApp_Inquiry_for_WooCommerce
+ * @package Rats_Price_Inquiry_for_WooCommerce
  * @since   1.0.0
  */
 
@@ -49,8 +49,10 @@ class SWPH_Price_Hider {
 			return $price_html;
 		}
 
+		$settings = SWPH_Settings::instance();
+
 		return '<span class="swph-price-hidden">' .
-				esc_html__( 'Contact us for price', 'price-hider-whatsapp-inquiry-for-woocommerce' ) .
+				esc_html( $settings->contact_price_text() ) .
 			'</span>';
 	}
 

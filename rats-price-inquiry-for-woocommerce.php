@@ -1,16 +1,15 @@
 <?php
 /**
- * Plugin Name:       Price Hider & WhatsApp Inquiry for WooCommerce
- * Plugin URI:        https://github.com/ratscse/Price-Hider-WhatsApp-Inquiry-for-WooCommerce
+ * Plugin Name:       Rats Price Inquiry for WooCommerce
  * Description:       Hide WooCommerce prices and replace them with smart WhatsApp inquiry buttons. Features category/product routing, auto-messages, guest-only mode, custom labels, and click analytics.
  * Version:           1.0.0
  * Requires at least: 5.8
  * Requires PHP:      7.4
+ * Requires Plugins:  woocommerce
  * Author:            M A Shuab Ratan
- * Author URI:        https://digitaskills.com
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       price-hider-whatsapp-inquiry-for-woocommerce
+ * Text Domain:       rats-price-inquiry-for-woocommerce
  * Domain Path:       /languages
  * WC requires at least: 6.0
  * WC tested up to:   8.9
@@ -30,19 +29,19 @@ define( 'SWPH_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
  *
  * @since 1.0.0
  */
-final class Smart_WhatsApp_Price_Hider {
+final class Rats_Price_Inquiry {
 
 	/**
 	 * Single instance of this class.
 	 *
-	 * @var Smart_WhatsApp_Price_Hider|null
+	 * @var Rats_Price_Inquiry|null
 	 */
 	private static $instance = null;
 
 	/**
 	 * Get or create the singleton instance.
 	 *
-	 * @return Smart_WhatsApp_Price_Hider
+	 * @return Rats_Price_Inquiry
 	 */
 	public static function instance(): self {
 		if ( null === self::$instance ) {
@@ -66,7 +65,7 @@ final class Smart_WhatsApp_Price_Hider {
 		require_once SWPH_PLUGIN_DIR . 'includes/class-swph-install.php';
 		require_once SWPH_PLUGIN_DIR . 'includes/class-swph-settings.php';
 		require_once SWPH_PLUGIN_DIR . 'includes/class-swph-price-hider.php';
-		require_once SWPH_PLUGIN_DIR . 'includes/class-swph-whatsapp-button.php';
+		require_once SWPH_PLUGIN_DIR . 'includes/class-swph-inquiry-button.php';
 		require_once SWPH_PLUGIN_DIR . 'includes/class-swph-analytics.php';
 		require_once SWPH_PLUGIN_DIR . 'includes/class-swph-product-meta.php';
 		require_once SWPH_PLUGIN_DIR . 'includes/class-swph-rest-api.php';
@@ -97,19 +96,13 @@ final class Smart_WhatsApp_Price_Hider {
 			return;
 		}
 
-		load_plugin_textdomain(
-			'price-hider-whatsapp-inquiry-for-woocommerce',
-			false,
-			dirname( SWPH_PLUGIN_BASENAME ) . '/languages'
-		);
-
 		// Declare HPOS compatibility.
 		add_action( 'before_woocommerce_init', array( $this, 'declare_hpos_compatibility' ) );
 
 		// Boot components.
 		SWPH_Settings::instance();
 		SWPH_Price_Hider::instance();
-		SWPH_WhatsApp_Button::instance();
+		SWPH_Inquiry_Button::instance();
 		SWPH_Analytics::instance();
 		SWPH_Product_Meta::instance();
 		SWPH_REST_API::instance();
@@ -139,7 +132,7 @@ final class Smart_WhatsApp_Price_Hider {
 	 */
 	public function woocommerce_missing_notice(): void {
 		echo '<div class="notice notice-error"><p>' .
-				esc_html__( 'Price Hider & WhatsApp Inquiry for WooCommerce requires WooCommerce to be installed and active.', 'price-hider-whatsapp-inquiry-for-woocommerce' ) .
+				esc_html__( 'Rats Price Inquiry for WooCommerce requires WooCommerce to be installed and active.', 'rats-price-inquiry-for-woocommerce' ) .
 			'</p></div>';
 	}
 }
@@ -147,10 +140,10 @@ final class Smart_WhatsApp_Price_Hider {
 /**
  * Returns the main instance of the plugin.
  *
- * @return Smart_WhatsApp_Price_Hider
+ * @return Rats_Price_Inquiry
  */
-function SWPH(): Smart_WhatsApp_Price_Hider {
-	return Smart_WhatsApp_Price_Hider::instance();
+function SWPH(): Rats_Price_Inquiry {
+	return Rats_Price_Inquiry::instance();
 }
 
 // Kick off.

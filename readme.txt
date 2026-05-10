@@ -1,19 +1,19 @@
-=== Price Hider & WhatsApp Inquiry for WooCommerce ===
+=== Rats Price Inquiry for WooCommerce ===
 Contributors:      shuab_ratan
-Donate link:       https://www.buymeacoffee.com/digitaskills
 Tags:              woocommerce, whatsapp, hide price, price inquiry, catalog mode
 Requires at least: 5.8
 Tested up to:      6.9
 Requires PHP:      7.4
+Requires Plugins:  woocommerce
 Stable tag:        1.0.0
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Hide WooCommerce prices and replace them with smart WhatsApp inquiry buttons — routing, auto-messages, guest-only mode, custom labels, analytics and more.
+Hide WooCommerce prices and replace them with WhatsApp inquiry buttons — routing, auto-messages, guest-only mode, custom labels, analytics and more.
 
 == Description ==
 
-**Price Hider & WhatsApp Inquiry for WooCommerce** is a free WooCommerce plugin that hides product prices and replaces the add-to-cart button with a smart WhatsApp inquiry button. Perfect for B2B stores, quote-based shops, or any business that wants customers to ask before buying.
+**Rats Price Inquiry for WooCommerce** is a free WooCommerce plugin that hides product prices and replaces the add-to-cart button with a smart WhatsApp inquiry button. Perfect for B2B stores, quote-based shops, or any business that wants customers to ask before buying.
 
 = Key Features =
 
@@ -41,20 +41,12 @@ GET /wp-json/swph/v1/product/{id} for headless / block-based themes.
 **Tools Page**
 CSV export, analytics reset, and environment health check.
 
-= Support the Developer =
-
-This plugin is completely free. If it helps your business, please consider:
-
-* Buy Me a Coffee: https://www.buymeacoffee.com/digitaskills
-* Ko-fi Donation: https://ko-fi.com/digitaskills
-* Hire me for WordPress development: https://digitaskills.com/hire-me
-
 == Installation ==
 
-1. Upload the smart-whatsapp-price-hider folder to /wp-content/plugins/.
+1. Upload the `rats-price-inquiry-for-woocommerce` folder to `/wp-content/plugins/`.
 2. Activate the plugin in Plugins > Installed Plugins.
 3. Ensure WooCommerce is installed and active.
-4. Go to WA Price Hider > Settings to configure.
+4. Go to Price Inquiry > Settings to configure.
 
 == Frequently Asked Questions ==
 

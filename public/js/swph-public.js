@@ -1,6 +1,6 @@
 /**
- * Smart WhatsApp Price Hider — Public JS
- * Fires an AJAX request to log WhatsApp button clicks.
+ * Rats Price Inquiry for WooCommerce — Public JS
+ * Fires an AJAX request to log inquiry button clicks.
  */
 (function ($) {
     'use strict';

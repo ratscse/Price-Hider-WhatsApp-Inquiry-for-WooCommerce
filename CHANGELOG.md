@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to **Price Hider & WhatsApp Inquiry for WooCommerce** are documented here.
+All notable changes to **Rats Price Inquiry for WooCommerce** are documented here.
 
 This project follows [Semantic Versioning](https://semver.org/) and
 [Keep a Changelog](https://keepachangelog.com/) conventions.
